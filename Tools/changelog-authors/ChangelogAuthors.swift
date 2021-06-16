@@ -54,7 +54,7 @@ extension Sequence {
 }
 
 // MARK: Command
-
+@main
 struct ChangelogAuthors: ParsableCommand {
   static var configuration: CommandConfiguration {
     CommandConfiguration(
@@ -128,7 +128,7 @@ struct ChangelogAuthors: ParsableCommand {
     return url
   }
   
-  mutating func run() throws {
+  mutating func run() async throws {
     let data = try Data(contentsOf: try comparisonURL())
     let comparison = try JSONDecoder().decode(Comparison.self, from: data)
     let authors = comparison.commits.map({ $0.author })
@@ -141,5 +141,4 @@ struct ChangelogAuthors: ParsableCommand {
   }
 }
 
-ChangelogAuthors.main()
 

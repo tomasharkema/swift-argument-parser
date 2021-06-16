@@ -11,6 +11,7 @@
 
 import ArgumentParser
 
+@main
 struct Repeat: ParsableCommand {
     @Option(help: "The number of times to repeat 'phrase'.")
     var count: Int?
@@ -21,7 +22,7 @@ struct Repeat: ParsableCommand {
     @Argument(help: "The phrase to repeat.")
     var phrase: String
 
-    mutating func run() throws {
+    mutating func run() async throws {
         let repeatCount = count ?? .max
 
         for i in 1...repeatCount {
@@ -33,5 +34,3 @@ struct Repeat: ParsableCommand {
         }
     }
 }
-
-Repeat.main()

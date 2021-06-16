@@ -11,6 +11,7 @@
 
 import ArgumentParser
 
+@main
 struct Math: ParsableCommand {
     // Customize your command's help and subcommands by implementing the
     // `configuration` property.
@@ -243,4 +244,3 @@ func customCompletion(_ s: [String]) -> [String] {
     : ["hello", "helicopter", "heliotrope"]
 }
 
-Math.main()
